@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー一覧</title>
+</head>
+<body>
+  <form action="#" th:action="@{/users}" th:object="${user}" method="post">
+    <div>
+      <label for="name">名前</label>
+      <input type="text" id="name" th:field="*{name}">
+      <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="email">メールアドレス</label>
+      <input type="text" id="email" th:field="*{email}">
+      <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="content">内容</label>
+      <input type="text" id="content" th:field="*{content}">
+      <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="zip-code">郵便番号</label>
+      <input type="text" id="zip-code" th:field="*{zipCode}">
+      <span th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="client-code">管理コード</label>
+      <input type="text" id="client-code" th:field="*{clientCd}">
+      <span th:if="${#fields.hasErrors('clientCd')}" th:errors="*{clientCd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="user-code">ユーザーコード</label>
+      <input type="text" id="user-code" th:field="*{userCd}">
+      <span th:if="${#fields.hasErrors('userCd')}" th:errors="*{userCd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="template-code">テンプレートコード</label>
+      <input type="text" id="template-code" th:field="*{templateCd}">
+      <span th:if="${#fields.hasErrors('templateCd')}" th:errors="*{templateCd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="client-shop-code">店舗コード</label>
+      <input type="text" id="client-shop-code" th:field="*{clientShopCd}">
+      <span th:if="${#fields.hasErrors('clientShopCd')}" th:errors="*{clientShopCd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="job-frame-code">枠ID</label>
+      <input type="text" id="job-frame-code" th:field="*{jobFrameCd}">
+      <span th:if="${#fields.hasErrors('jobFrameCd')}" th:errors="*{jobFrameCd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="post-code">組織コード</label>
+      <input type="text" id="post-code" th:field="*{postCd}">
+      <span th:if="${#fields.hasErrors('postCd')}" th:errors="*{postCd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="description">説明</label>
+      <input type="text" id="description" th:field="*{description}">
+      <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="katakana">カタカナ</label>
+      <input type="text" id="katakana" th:field="*{katakana}">
+      <span th:if="${#fields.hasErrors('katakana')}" th:errors="*{katakana}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="date">日付</label>
+      <input type="date" id="date" th:field="*{date}">
+      <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="tel">電話番号（ハイフンなし）</label>
+      <input type="tel" id="tel" th:field="*{tel}">
+      <span th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="half-size-number">半角数値</label>
+      <input type="text" id="half-size-number" th:field="*{halfSizeNumber}">
+      <span th:if="${#fields.hasErrors('halfSizeNumber')}" th:errors="*{halfSizeNumber}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="create">作成日</label>
+      <input type="date" id="create" th:field="*{create}">
+      <span th:if="${#fields.hasErrors('create')}" th:errors="*{create}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="update">更新日</label>
+      <input type="date" id="update" th:field="*{update}">
+      <span th:if="${#fields.hasErrors('update')}" th:errors="*{update}" style="color: red"></span>
+    </div>
+    <div>
+      <input type="submit" value="送信">
+    </div>
+  </form>
+</body>
+</html>
