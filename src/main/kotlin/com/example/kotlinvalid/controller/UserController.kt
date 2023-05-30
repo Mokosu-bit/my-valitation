@@ -9,14 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import java.io.File
+import java.nio.file.Files
+import kotlin.io.path.Path
 
 @Controller
 @RequestMapping("/users")
 class UserController {
     @GetMapping
     fun index(model: Model): String {
-        val user = User(null,
+        val user = User(
+            name = null,
             email = null,
+            pwd = null,
+            pwdConfirm = null,
             content = null,
             zipCode = null,
             clientCd = null,
@@ -30,6 +36,8 @@ class UserController {
             date = null,
             tel = null,
             halfSizeNumber = null,
+            sum1 = null,
+            sum2 = null,
             create = null,
             update = null
         )

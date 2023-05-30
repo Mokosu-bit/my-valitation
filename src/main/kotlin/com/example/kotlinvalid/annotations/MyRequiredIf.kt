@@ -17,14 +17,12 @@ annotation class MyRequiredIf(
     val payload: Array<KClass<out Payload>> = [],
     val field: String,
     val target: String,
-    val targetValue: Boolean
 )
 
 class MyRequiredIfValidator: ConstraintValidator<MyRequiredIf, Any> {
 
     private lateinit var field: String
     private lateinit var target: String
-    private var targetValue: Boolean = true
 
     /**
      * 初期化処理
@@ -32,25 +30,21 @@ class MyRequiredIfValidator: ConstraintValidator<MyRequiredIf, Any> {
     override fun initialize(constraintAnnotation: MyRequiredIf) {
         field = constraintAnnotation.field
         target = constraintAnnotation.target
-        targetValue = constraintAnnotation.targetValue
     }
 
     /**
      * バリデーション処理
-     * targetがtrueの場合、fieldが必須
+     * targetで指定されたフィールドに値が入力されている場合、fieldは必須
+     * targetで指定されたフィールドに値が入力されていない場合、fieldは必須ではない
      */
     override fun isValid(value: Any?, context: ConstraintValidatorContext?): Boolean {
         if (value == null) return true
         val beanWrapper = BeanWrapperImpl(value)
+        val targetValue = beanWrapper.getPropertyValue(target)?.toString()
+        val fieldValue = beanWrapper.getPropertyValue(field)?.toString()
 
-        val targetValue = beanWrapper.getPropertyValue(target)
-        val fieldValue = beanWrapper.getPropertyValue(field)
+        if (targetValue.isNullOrBlank()) return true
 
-        if (targetValue == null || fieldValue == null) return true
-        return if (targetValue == this.targetValue) {
-            fieldValue.toString().isNotEmpty()
-        } else {
-            true
-        }
+        return fieldValue?.isNotEmpty() ?: true
     }
 }

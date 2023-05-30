@@ -6,6 +6,11 @@
 </head>
 <body>
   <form action="#" th:action="@{/users}" th:object="${user}" method="post">
+    <ul>
+      <!-- @Validatedで設定したエラーメッセージを表示する場合 -->
+      <li th:each="error:${#fields.detailedErrors()}"
+          class="err" th:text="${error.message}" />
+    </ul>
     <div>
       <label for="name">名前</label>
       <input type="text" id="name" th:field="*{name}">
@@ -15,6 +20,16 @@
       <label for="email">メールアドレス</label>
       <input type="text" id="email" th:field="*{email}">
       <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="pwd">パスワード</label>
+      <input type="text" id="pwd" th:field="*{pwd}">
+      <span th:if="${#fields.hasErrors('pwd')}" th:errors="*{pwd}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="pwdConfirm">パスワード（確認）</label>
+      <input type="text" id="pwdConfirm" th:field="*{pwdConfirm}">
+      <span th:if="${#fields.hasErrors('pwdConfirm')}" th:errors="*{pwdConfirm}" style="color: red"></span>
     </div>
     <div>
       <label for="content">内容</label>
@@ -80,6 +95,16 @@
       <label for="half-size-number">半角数値</label>
       <input type="text" id="half-size-number" th:field="*{halfSizeNumber}">
       <span th:if="${#fields.hasErrors('halfSizeNumber')}" th:errors="*{halfSizeNumber}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="sum1">合計1</label>
+      <input type="text" id="sum1" th:field="*{sum1}">
+      <span th:if="${#fields.hasErrors('sum1')}" th:errors="*{sum1}" style="color: red"></span>
+    </div>
+    <div>
+      <label for="sum2">合計2</label>
+      <input type="text" id="sum2" th:field="*{sum2}">
+      <span th:if="${#fields.hasErrors('sum2')}" th:errors="*{sum2}" style="color: red"></span>
     </div>
     <div>
       <label for="create">作成日</label>
