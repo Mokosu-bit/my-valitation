@@ -1,0 +1,3 @@
+[submodule "sub-swagger"]
+	path = sub-swagger
+	url = https://github.com/Mokosu-bit/sub-swagger
